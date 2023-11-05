@@ -1,101 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>Fuzzy Eyes</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {
-                width: 100wh;
-                height: 90vh;
-                color: rgb(112, 112, 112);
-                background: linear-gradient(-45deg, #adadad, #0b0b0b);
-                background-size: 200% 200%;
-            }
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Fuzzy Eyes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://widget-app.songkick.com/injector/10211411'></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      /* background-color: black; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    a, a:visited, a:hover, a:active {
+        color: inherit;
+        text-decoration: none !important;
+    }
 
-            .header-links {
-                padding: 10px 0px 20px 0px;
-            }
+    canvas {
+        position: absolute;
+    }
 
-            h2 {
-                font-family: 'Times New Roman', Times, serif !important;
-                font-style: italic;
-                font-size: 50px !important;
-                font-weight: 550 !important;
-                -webkit-filter: drop-shadow(3px 3px 2px rgba(255, 255, 255, 0.4));
-            }
+    #background {
+        background-image: url("bg3.jpg");
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
 
-            h3 {
-                font-family: sans-serif;
-                padding-top: 8px;
-                color: white !important;
-                font-size: 14px !important;
-            }
+    .header, .footer {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        width: 100%;
+        display: flex;
+    }
+    .header {
+        top: 0;
+    }
+    .footer {
+        bottom: 0;
+    }
+    .element-container {
+        display: inline-block;
+        width: 25%;
+    }
+    .element {
+        font-size: 16px;
+        text-align: center;
+        padding: 20px;
+        font-family: "Arial";
+        font-style: italic;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+      transition: text-shadow 0.3s ease-in-out;
+    }
 
-            .link-btn {
-                width: 80% !important;
-                padding-top: 10px !important;
-                padding-bottom: 10px !important;
-                font-weight: 800 !important;
-            }
+    .element:hover {
+      text-shadow: 0px 0px 8px rgba(255, 255, 255, 1);
+    }
 
-            .shake {
-                animation: shake-animation 4.72s ease infinite;
-                transform-origin: 50% 50%;
-            }
+    #live-container {
+        position: absolute;
+        padding: 70px 0;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+    }
+    #live {
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: scroll;
+    }
+    .tab {
+        cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <div id="background"></div>
+    
+    <canvas id="canvas"></canvas>
 
-            .element {
-                margin: 0 auto;
-                width: 150px;
-                height: 150px;
-                background: red;
-            }
-            .cover-img {
-                margin-top: 20px;
-                height: 80%;
-                width: 80%;
-                object-position: bottom;
-                -webkit-filter: drop-shadow(0px 0px 10px rgba(136, 136, 136, 0.4));
-                /* padding: 50px; */
-            }
-        </style>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    </head>
-    <body>
-        <!-- Alpha.ly Version 0.1 | Development Version -->
-        <div class="container">
-            <div class="col-xs-12">
-                <div class="text-center header-links">
-                    <h2 style="color: #ffffff; padding-top: 20px;">Fuzzy Eyes</h2>
-                    <img class="cover-img" src="./02900018.JPG" />
-                </div>
-            </div>
+    <div id="live-container" style="display:none">
+        <div id="live">
+            <a href="https://www.songkick.com/artists/10211411" class="songkick-widget" data-theme="dark"
+            data-track-button="on" data-detect-style="off" data-background-color="rgb(0,0,0,1)"
+            data-font-color="rgb(255,255,255,1)" data-button-bg-color="rgb(255,255,255,1)"
+            data-button-text-color="rgb(0,0,0,1)" data-locale="en" data-other-artists="on" data-share-button="on"
+            data-country-filter="on" data-rsvp="on" data-request-show="on" data-past-events="on" data-past-events-offtour="on"
+            data-remind-me="off">Live</a>
         </div>
-        <div class="container">
-            <div class="col-xs-12">
-                <div class="text-center">
-                    <div style="padding-top: 10px; padding-bottom: 30px;">
-                        <a href="https://entradium.com/events/fuzzy-eyes-newborn-ghost" target='_blank'>
-                            <button type="button" class="btn link-btn">Entrades concert 17 de març + Newborn Ghost</button>
-                        </a>
-                    </div>
-                    <div style="padding-top: 10px; padding-bottom: 30px;">
-                        <button onclick="location.href='https://open.spotify.com/artist/1lvJ8Fj2Vj6wstcCtJSpxb?si=6FHlA9_NTuan4DTVsTJJ2w'" type="button" class="btn btn-outline-light link-btn">Spotify</button>
-                    </div>
-                    <div style="padding-bottom: 30px;">
-                        <button onclick="location.href='https://fuzzyeyes.bandcamp.com/releases'" type="button" class="btn btn-outline-light link-btn">Bandcamp</button>
-                    </div>
-                    <div style="padding-bottom: 30px;">
-                        <button onclick="location.href='https://www.youtube.com/channel/UCz3xj3mxDnaMBsAU8E7lHIw/'" type="button" class="btn btn-outline-light link-btn">YouTube</button>
-                    </div>
-                    <div style="padding-bottom: 30px;">
-                        <button onclick="location.href='https://music.apple.com/es/artist/fuzzy-eyes/1615225771'" type="button" class="btn btn-outline-light link-btn">Apple Music</button>
-                    </div>
-                    <!-- <div style="padding-bottom: 30px;"><button onclick="location.href=''"
-                        type="button" class="btn btn-outline-light link-btn">Tidal</button></div> -->
-                </div>
-            </div>
+    </div>
+
+    <div class="header">
+        <div class="element-container tab" tab-name="home">
+            <div class="element">HOME</div>
         </div>
-    </body>
+        <div class="element-container tab" tab-name="live">
+            <div class="element">LIVE</div>
+        </div>
+        <div class="element-container">
+            <a target="_blank" href="./fuzzy_eyes_epk.pdf">
+                <div class="element">PRESS</div>
+            </a>
+        </div>
+        <div class="element-container">
+            <a target="_blank" href="mailto:fuzzyeyesband@gmail.com">
+                <div class="element">CONTACT</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="element-container">
+            <a target="_blank" href="https://www.instagram.com/fuzzy_eyes/">
+                <div class="element">INSTAGRAM</div>
+            </a>
+        </div>
+        <div class="element-container">
+            <a target="_blank" href="https://www.youtube.com/@fuzzyeyes">
+                <div class="element">YOUTUBE</div>
+            </a>
+        </div>
+        <div class="element-container">
+            <a target="_blank" href="https://open.spotify.com/artist/1lvJ8Fj2Vj6wstcCtJSpxb?si=SFL0cn-WSs-wYSahnQPrkg">
+                <div class="element">SPOTIFY</div>
+            </a>
+        </div>
+        <div class="element-container">
+            <a target="_blank" href="https://fuzzyeyes.bandcamp.com/album/this-time">
+                <div class="element">BANDCAMP</div>
+            </a>
+        </div>
+    </div>
+  
+  <script>
+
+    function getFontSizeToFit(text, fontFace, maxWidth) {
+        const ctx = document.createElement('canvas').getContext('2d');
+        ctx.font = `italic bold 1px '${fontFace}'`;
+        return maxWidth / ctx.measureText(text).width;
+    }
+
+    class LetterInstance {
+      constructor(x, y, fontSize, opacity, font) {
+        this.x = x;
+        this.y = y;
+        this.fontSize = fontSize;
+        this.opacity = opacity;
+        this.font = font;
+      }
+    }
+
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    
+
+    // Track the mouse position
+    let mouseX, mouseY;
+
+    canvas.addEventListener("mousemove", (event) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = event.clientX - rect.left;
+        mouseY = event.clientY - rect.top;
+    });
+
+    var currentFont = "Times New Roman";
+    var currentFontIndex = 0;
+
+    var currentFonts = ["Times New Roman", "Arial", "Georgia", "Courier New", "Brush Script MT"];
+
+    const instances = [];
+
+    var x, y;
+
+    var startFontSize;
+    var maxFontSize;
+
+    const text = "Fuzzy Eyes";
+
+    function initialize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // ctx.font = "italic bold 'Times New Roman'";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+
+        // Initial position for the text
+        x = canvas.width / 2;
+        y = canvas.height / 2;
+
+        mouseX = canvas.width / 2;;
+        mouseY = canvas.height / 2 - 10;
+
+        // Recursive effect variables
+        ctx.measureText("Fuzzy Eyes").width
+
+        startFontSize = getFontSizeToFit("Fuzzy Eyes", currentFont, canvas.width * 0.95);
+        maxFontSize = 0.9 * startFontSize;
+    }
+    initialize();
+
+    canvas.addEventListener('click', function (event) {
+        currentFontIndex = (currentFontIndex + 1) % currentFonts.length;
+        currentFont = currentFonts[currentFontIndex];
+        startFontSize = getFontSizeToFit("Fuzzy Eyes", currentFont, canvas.width * 0.95)
+    });
+
+    window.addEventListener('resize', initialize, false);
+
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var blurIntensity = 8;
+        ctx.shadowColor = "rgba(255, 255, 255, 1)";
+
+        for (let i = 0; i < instances.length; i++) {
+            ctx.shadowBlur = blurIntensity;
+            // console.log(i);
+            const instance = instances[i];
+            ctx.globalAlpha = instance.opacity;
+            ctx.font = `italic bold ${instance.fontSize}px '${instance.font}'`;
+            ctx.fillText(text, instance.x, instance.y);
+            if (instance.opacity == 1.0) {
+                instance.opacity -= 0.5
+            }
+            instance.opacity -= 0.03;
+            blurIntensity += 2;
+            instance.fontSize -= startFontSize / 30;
+            var min = -3.0;
+            var max = 3.0;
+            var randFloat = Math.random() * (max - min) + min;
+            instance.x += (mouseX - canvas.width / 2) * 0.06 + randFloat;
+            instance.y += (mouseY - canvas.height / 2) * 0.06 + randFloat;
+
+            if (instance.opacity <= 0) {
+                instances.splice(i, 1);
+            }
+        }
+        if (instances.length < 20) {
+            instances.push(new LetterInstance(x, y, startFontSize, 1.0, currentFont));
+        }
+        // requestAnimationFrame(draw);
+        setTimeout(function() { 
+            requestAnimationFrame(draw);
+        }, 50);
+    }
+
+    draw();
+
+
+    let tabsArray = document.querySelectorAll(".tab");
+    let livePage = document.getElementById("live-container");
+
+    tabsArray.forEach(function(elem) {
+        console.log(elem);
+        elem.addEventListener("click", function() {
+            console.log(elem);
+            var tabName = elem.getAttribute("tab-name");
+            console.log(tabName);
+            if (tabName == "home") {
+                canvas.style.display = "block";
+                livePage.style.display = "none";
+            }
+            else if (tabName == "live") {
+                canvas.style.display = "none";
+                livePage.style.display = "block";
+
+            }
+        });
+    });
+
+
+  </script>
+</body>
 </html>
